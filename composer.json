@@ -1,0 +1,80 @@
+{
+    "name": "appslanka/job-watcher",
+    "type": "library",
+    "description": "Simple package for job monitering in filamentphp ",
+    "license": "MIT",
+    "keywords": [
+        "appslanka",
+        "laravel",
+        "filament",
+        "job monitoring",
+        "queue watcher",
+        "job-watcher"
+    ],
+    "homepage": "https://github.com/appslanka/job-watcher",
+    "support": {
+        "issues": "https://github.com/appslanka/job-watcher/issues",
+        "source": "https://github.com/appslanka/job-watcher"
+    },
+    "authors": [
+        {
+            "name": "Appslanka",
+            "email": "appslankasoftwaresolutions@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "filament/tables": "^3.0",
+        "spatie/laravel-package-tools": "^1.15.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^7.9",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^8.0",
+        "pestphp/pest": "^2.1",
+        "pestphp/pest-plugin-arch": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Appslanka\\JobWatcher\\": "src/",
+            "Appslanka\\JobWatcher\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Appslanka\\JobWatcher\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Appslanka\\JobWatcher\\JobWatcherServiceProvider"
+            ],
+            "aliases": {
+                "JobWatcher": "Appslanka\\JobWatcher\\Facades\\JobWatcher"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
